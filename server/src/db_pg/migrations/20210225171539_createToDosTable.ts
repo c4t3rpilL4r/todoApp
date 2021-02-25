@@ -12,7 +12,7 @@ export async function up(knex: Knex): Promise<void> {
         table.string('name').notNullable();
         table.boolean('isDone').notNullable().defaultTo(false);
         table.integer('userId').notNullable();
-        table.foreign('userId').references('user.id').onDelete('CASCADE');
+        table.foreign('userId').references('users.id').onDelete('CASCADE');
       })
       .then(() => {
         // tslint:disable-next-line: no-console
