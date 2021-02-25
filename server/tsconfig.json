@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "rootDir": "./",
+    "outDir": "./build",
+    "esModuleInterop": true,
+    "strict": true,
+    "baseUrl": "./",
+    "paths": {
+      "@app/models": ["src/db_pg/models"],
+      "@app/interfaces": ["src/core/interfaces"],
+      "@app/services": ["src/core/services"],
+      "@app/utils": ["src/utils"],
+      "@app/controllers": ["src/controllers"]
+    }
+  }
+}

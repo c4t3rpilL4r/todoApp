@@ -1,0 +1,22 @@
+{
+  "name": "todoapp",
+  "version": "1.0.0",
+  "description": "Prerequisites:\r - docker\r - postgresql\r - pgadmin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/c4t3rpilL4r/todoApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/c4t3rpilL4r/todoApp/issues"
+  },
+  "homepage": "https://github.com/c4t3rpilL4r/todoApp#readme",
+  "dependencies": {
+    "typescript": "^4.2.2"
+  }
+}
