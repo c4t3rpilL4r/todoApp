@@ -1,5 +1,3 @@
-import { RequestHandler } from 'express';
+const login = async (enteredPassword: string) => {};
 
-const login: RequestHandler = async (req, res) => {};
-
-export const authService = { login };
+export const authService = {};
