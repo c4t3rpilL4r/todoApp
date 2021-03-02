@@ -3,11 +3,11 @@ import bcrypt from 'bcrypt';
 const ROUNDS = 10;
 
 const verify = async (
-  enteredPassword: string,
-  registeredhashedPassword: string,
+  password: string,
   salt: string,
+  registeredPassword: string,
 ): Promise<boolean> => {
-  return await bcrypt.compare(enteredPassword + salt, registeredhashedPassword);
+  return await bcrypt.compare(password + salt, registeredPassword);
 };
 
 const generateSalt = async (): Promise<string> => {

@@ -12,7 +12,8 @@
       "@app/interfaces": ["src/core/interfaces"],
       "@app/services": ["src/core/services"],
       "@app/utils": ["src/utils"],
-      "@app/controllers": ["src/controllers"]
+      "@app/controllers": ["src/controllers"],
+      "@app/middlewares": ["src/middlewares"]
     }
   }
 }

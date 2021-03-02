@@ -13,8 +13,9 @@ const register: RequestHandler = async (req, res) => {
     password: hashedPassword,
   };
   const newUser = await userService.register(userDetails);
+  console.log(newUser);
 
-  res.status(200).send(newUser);
+  return !!newUser;
 };
 
 const getPaginated: RequestHandler = async (req, res) => {

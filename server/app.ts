@@ -3,6 +3,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import knex from './src/db_pg/knex-config';
 import { ICustomError } from '@app/interfaces';
 import { initRoutes } from './src/routes/index';
+import { corsMiddleware } from '@app/middlewares';
 
 const app = express();
 const port = 3000;
@@ -25,6 +26,7 @@ const startApp = async () => {
   ]);
 
   app.use(express.json());
+  app.use(corsMiddleware());
 
   initRoutes(app);
 
