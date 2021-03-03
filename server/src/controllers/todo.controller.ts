@@ -15,7 +15,7 @@ const create: RequestHandler = async (req, res) => {
   res.status(201).send(createdToDo);
 };
 
-const fetch: RequestHandler = async (req, res) => {
+const getPaginated: RequestHandler = async (req, res) => {
   const { page, limit } = req.query as any;
   const paginatedToDoList = await toDoService.getPaginated(page, limit);
 
@@ -48,4 +48,4 @@ const deleteById: RequestHandler = async (req, res) => {
   res.status(200).send({ message });
 };
 
-export const todoController = { create, fetch, update, deleteById };
+export const todoController = { create, getPaginated, update, deleteById };

@@ -9,4 +9,14 @@ const login = async (username: string, password: string) => {
   return isTheSame;
 };
 
-export const authService = { login };
+const changePassword = async (userId: number, newPassword: string) => {
+  const changedPassword = await User.query()
+    .findOne({ id: userId })
+    .patchAndFetch({
+      password: newPassword,
+    });
+
+  return changedPassword;
+};
+
+export const authService = { login, changePassword };

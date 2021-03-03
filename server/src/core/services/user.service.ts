@@ -31,21 +31,10 @@ const deleteById = async (userId: number) => {
   return !!deletedUser;
 };
 
-const changePassword = async (user: IUpsertUser) => {
-  const changedPassword = await User.query()
-    .findOne({ username: user.username })
-    .patchAndFetch({
-      password: user.password,
-    });
-
-  return changedPassword;
-};
-
 export const userService = {
   register,
   getPaginated,
   getById,
   update,
   deleteById,
-  changePassword,
 };

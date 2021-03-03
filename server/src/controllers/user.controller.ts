@@ -13,7 +13,6 @@ const register: RequestHandler = async (req, res) => {
     password: hashedPassword,
   };
   const newUser = await userService.register(userDetails);
-  console.log(newUser);
 
   return !!newUser;
 };
@@ -32,25 +31,8 @@ const getById: RequestHandler = async (req, res) => {
   res.status(200).send(user);
 };
 
-const changePassword: RequestHandler = async (req, res) => {
-  const { username, newPassword } = req.body;
-  const salt = await passwordUtil.generateSalt();
-  const hashedPassword = await passwordUtil.generateHash(newPassword, salt);
-
-  const changePasswordDetails: IUpsertUser = {
-    username,
-    password: hashedPassword,
-  };
-  const changedPassword = await userService.changePassword(
-    changePasswordDetails,
-  );
-
-  res.status(200).send(changePassword);
-};
-
 export const userController = {
   register,
   getPaginated,
   getById,
-  changePassword,
 };

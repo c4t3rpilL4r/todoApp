@@ -4,6 +4,6 @@ import express from 'express';
 
 const router = express.Router();
 
-router.post('/users', asyncHandler(userController.register));
+router.post('/register', asyncHandler(userController.register));
 
 export const userRouter = router;
