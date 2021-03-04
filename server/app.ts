@@ -2,7 +2,7 @@ import 'tsconfig-paths/register';
 import express, { Request, Response, NextFunction } from 'express';
 import knex from './src/db_pg/knex-config';
 import { ICustomError } from '@app/interfaces';
-import { initRoutes } from './src/routes/index';
+import { initRoutes } from './src/routes/v1/index';
 import { corsMiddleware } from '@app/middlewares';
 
 const app = express();

@@ -1,19 +1,22 @@
 import { authService } from '@app/services';
-import { jwtUtil, passwordUtil } from '@app/utils';
+import { passwordUtil } from '@app/utils';
 import { RequestHandler } from 'express';
 
 const login: RequestHandler = async (req, res, next) => {
   const { username, password } = req.body;
-  const isAuthenticated = authService.login(username, password);
+  const token = authService.login(username, password);
 
-  if (!isAuthenticated) {
+  if (!token) {
     next(404);
   }
 
-  const token = jwtUtil.createToken();
-  console.log(token);
+  res.send({ token });
+};
 
-  res.status(200).json({ token });
+const isAuthenticated: RequestHandler = async (req, res) => {
+  req.user
+    ? res.send({ isAuthenticated: true })
+    : res.status(401).send({ isAuthenticated: false });
 };
 
 const changePassword: RequestHandler = async (req, res) => {
@@ -30,4 +33,4 @@ const changePassword: RequestHandler = async (req, res) => {
   res.status(200).send(changedPassword);
 };
 
-export const authController = { login, changePassword };
+export const authController = { login, isAuthenticated, changePassword };

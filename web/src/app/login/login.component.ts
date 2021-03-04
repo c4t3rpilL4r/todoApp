@@ -13,7 +13,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private httpClient: HttpClient,
   ) {}
 
   ngOnInit(): void {
@@ -32,8 +31,6 @@ export class LoginComponent implements OnInit {
   login() {
     const { username, password } = this.loginForm.value;
 
-    this.authService.login(username, password).then((token) => {
-      console.log(token);
-    });
+    this.authService.login(username, password);
   }
 }

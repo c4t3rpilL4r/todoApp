@@ -15,7 +15,7 @@ export class UserService {
     };
 
     const isSuccessful = this.httpClient
-      .post('http://localhost:3000/v1/register', authData)
+      .post('http://localhost:3000/v1/users', authData)
       .toPromise();
 
     return !!isSuccessful;

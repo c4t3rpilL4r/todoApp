@@ -15,7 +15,7 @@ export class AuthService {
     };
 
     const token = this.httpClient
-      .post('http://localhost:3000/v1/login', authData)
+      .post('http://localhost:3000/v1/auth/login', authData)
       .toPromise();
 
     return token;
