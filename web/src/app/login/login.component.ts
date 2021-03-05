@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from '@app/services';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +33,8 @@ export class LoginComponent implements OnInit {
   login() {
     const { username, password } = this.loginForm.value;
 
-    this.authService.login(username, password);
+    this.authService.login(username, password).then(() => {
+      this.router.navigate([]);
+    });
   }
 }

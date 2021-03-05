@@ -4,13 +4,13 @@ import { RequestHandler } from 'express';
 
 const login: RequestHandler = async (req, res, next) => {
   const { username, password } = req.body;
-  const token = authService.login(username, password);
+  authService.login(username, password).then((token) => {
+    if (!token) {
+      next(404);
+    }
 
-  if (!token) {
-    next(404);
-  }
-
-  res.send({ token });
+    res.send({ token });
+  });
 };
 
 const isAuthenticated: RequestHandler = async (req, res) => {

@@ -1,23 +1,43 @@
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { JwtService } from '../jwt/jwt.service';
 import { Injectable } from '@angular/core';
 import { IAuthData } from '@app/interfaces';
+import { ApiService } from '../api/api.service';
+import { LocalStorageService } from '../local-storage/local-storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private httpClient: HttpClient) {}
+  private endPoint = 'auth';
 
-  login(username: string, password: string) {
+  constructor(
+    private apiService: ApiService,
+    private jwtService: JwtService,
+    private localStorageService: LocalStorageService,
+    private router: Router,
+  ) {}
+
+  async login(username: string, password: string) {
     const authData: IAuthData = {
       username,
       password,
     };
 
-    const token = this.httpClient
-      .post('http://localhost:3000/v1/auth/login', authData)
-      .toPromise();
-
-    return token;
+    return this.apiService
+      .post<ILoginResponse>(`${this.endPoint}/login`, authData)
+      .then((data) => {
+        this.jwtService.saveJwt(data.token);
+        return;
+      });
   }
+
+  logout() {
+    this.localStorageService.clear();
+    this.router.navigate(['/login']);
+  }
+}
+
+interface ILoginResponse {
+  token: string;
 }
