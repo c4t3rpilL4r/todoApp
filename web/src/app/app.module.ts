@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { RegisterComponent } from './register/register.component';
 import { TodosComponent } from './todos/todos.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TodosComponent } from './todos/todos.component';
     RegisterComponent,
     HeaderComponent,
     TodosComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,

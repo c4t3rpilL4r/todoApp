@@ -36,6 +36,16 @@ export class AuthService {
     this.localStorageService.clear();
     this.router.navigate(['/login']);
   }
+
+  isLoggedIn() {
+    const isValidToken = this.jwtService.checkTokenValidity();
+
+    if (!isValidToken) {
+      this.localStorageService.remove('token');
+    }
+
+    return isValidToken;
+  }
 }
 
 interface ILoginResponse {
