@@ -1,3 +1,4 @@
+import { LayoutComponent } from './layout/layout.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
@@ -7,12 +8,13 @@ import { AuthGuardService } from './core/route-guards';
 const routes: Routes = [
   {
     path: '',
+    component: LayoutComponent,
     canActivate: [AuthGuardService],
     children: [
       {
         path: 'users',
         loadChildren: () =>
-          import('./users/users.module').then((m) => m.UsersModule),
+          import('./layout/layout.module').then((m) => m.LayoutModule),
       },
     ],
   },

@@ -7,10 +7,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './layout/header/header.component';
 import { RegisterComponent } from './register/register.component';
-import { TodosComponent } from './todos/todos.component';
-import { UsersComponent } from './users/users.component';
+import { TodosComponent } from './layout/todos/todos.component';
+import { UsersComponent } from './layout/users/users.component';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { UsersComponent } from './users/users.component';
     HeaderComponent,
     TodosComponent,
     UsersComponent,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
